@@ -50,18 +50,18 @@ unexplored_rooms.remove(player.current_room.id)
 while len(unexplored_rooms) > 0:
     
     # Create a deque for the BFS and a set to save visited rooms.
-    deque = deque()
+    d = deque()
     visited = set()
 
     # Add next room to a next_paths list and to the deque.
     next_paths.append(next_room)
-    deque.append([next_room])
+    d.append([next_room])
 
     # While this deque is not empty...
-    while len(deque) > 0:
+    while len(d) > 0:
 
         # Pop the first -- first in, first out!
-        path = deque.popleft()
+        path = d.popleft()
 
         # Get the last room in the list of the path
         last_room = path[-1]
@@ -103,7 +103,7 @@ while len(unexplored_rooms) > 0:
 
                 # If that room isn't explored, add add to BFS to check for unexplored_rooms
                 if room_in_dir.id not in visited:
-                    deque.append(path+[room_in_dir])
+                    d.append(path+[room_in_dir])
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # # # # Y O U R # # # # C O D E # # # # H E R E # # # # 
